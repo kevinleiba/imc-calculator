@@ -13,7 +13,8 @@ const TOKEN_PATH = "token.json";
 fs.readFile("./credentials.json", (err, content) => {
   if (err) return console.log("Error loading client secret file:", err);
   // Authorize a client with credentials, then call the Google Sheets API.
-  authorize(JSON.parse(content), listImcs);
+  authorize(JSON.parse(content), addImc);
+  // authorize(JSON.parse(content), listImcs);
   // authorize(JSON.parse(content), listMajors);
 });
 
@@ -124,6 +125,29 @@ function listImcs(auth) {
         });
       } else {
         console.log("No data found.");
+      }
+    }
+  );
+}
+
+function addImc(auth) {
+  let values = [["Jean Pomme", 55, 172, "13/04/1995", 18.6]];
+
+  let requestBody = { values };
+
+  const sheets = google.sheets({ version: "v4", auth });
+
+  sheets.spreadsheets.values.append(
+    {
+      spreadsheetId: "1s6x4aWAptcaM0qWjVHHRUqXuSJPZpdTZ8276AiLQZ84",
+      range: "IMC!A2:E",
+      requestBody,
+      valueInputOption: "raw",
+    },
+    (err, result) => {
+      if (err) return console.log("The API returned an error: " + err);
+      else {
+        console.log(JSON.stringify(result));
       }
     }
   );
