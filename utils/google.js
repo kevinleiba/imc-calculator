@@ -1,35 +1,44 @@
 const fs = require("fs");
 const readline = require("readline");
 const { google } = require("googleapis");
+const path = require("path");
 
 const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
-const TOKEN_PATH = "token.json";
+const TOKEN_PATH = path.join(__dirname, "./token.json");
 
 function getAuthFromGoogle(credentials) {
-  return new Promise((resolve) => {
-    const { client_secret, client_id, redirect_uris } = credentials.installed;
-    const oAuth2Client = new google.auth.OAuth2(
-      client_id,
-      client_secret,
-      redirect_uris[0]
-    );
+  const { client_secret, client_id, redirect_uris } = credentials.installed;
+  const oAuth2Client = new google.auth.OAuth2(
+    client_id,
+    client_secret,
+    redirect_uris
+  );
 
-    // Check if we have previously stored a token.
-    fs.readFile(TOKEN_PATH, (err, token) => {
-      if (err) return getNewToken(oAuth2Client);
-      oAuth2Client.setCredentials(JSON.parse(token));
-      return resolve(oAuth2Client);
-    });
+  oAuth2Client.setCredentials({
+    access_token: process.env.TOKEN_ACCESS_TOKEN,
+    refresh_token: process.env.TOKEN_REFRESH_TOKEN,
+    scope: process.env.TOKEN_SCOPE,
+    token_type: process.env.TOKEN_TYPE,
+    expiry_date: Number(process.env.TOKEN_EXPIRY_DATE),
   });
+  return oAuth2Client;
 }
 
 function getAuth() {
-  return new Promise((resolve, reject) => {
-    fs.readFile("./credentials.json", (err, content) => {
-      if (err) return reject(`Error loading client secret file: ${err}`);
-      getAuthFromGoogle(JSON.parse(content)).then(resolve);
-    });
-  });
+  const credentials = {
+    installed: {
+      client_id: process.env.CREDENTIALS_CLIENT_ID,
+      project_id: process.env.CREDENTIALS_PROJECT_ID,
+      auth_uri: process.env.CREDENTIALS_AUTH_URI,
+      token_uri: process.env.CREDENTIALS_TOKEN_URI,
+      auth_provider_x509_cert_url:
+        process.env.CREDENTIALS_AUTH_PROVIDER_X509_CERT_URL,
+      client_secret: process.env.CREDENTIALS_CLIENT_SECRET,
+      redirect_uris: process.env.CREDENTIALS_REDIRECT_URIS,
+    },
+  };
+
+  return getAuthFromGoogle(credentials);
 }
 
 /**
