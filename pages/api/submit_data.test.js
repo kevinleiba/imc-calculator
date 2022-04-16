@@ -17,17 +17,20 @@ describe("Submit Data", () => {
     const size = 170;
     const weight = 55;
     const bmi = 19;
+    const updatedAt = "2022-04-16T21:44:03.998Z";
 
     const token = "sampleToken";
 
     getAuth.mockReturnValueOnce(token);
-    appendImcs.mockResolvedValueOnce([[name, weight, size, birthDate, bmi]]);
+    appendImcs.mockResolvedValueOnce([
+      [name, weight, size, birthDate, bmi, updatedAt],
+    ]);
 
-    await submitData({ birthDate, name, size, weight });
+    await submitData({ birthDate, name, size, updatedAt, weight });
 
     expect(getAuth).toHaveBeenCalledTimes(1);
     expect(appendImcs).toHaveBeenCalledWith(token, [
-      [name, weight, size, birthDate, bmi],
+      [name, weight, size, birthDate, bmi, updatedAt],
     ]);
   });
 });
