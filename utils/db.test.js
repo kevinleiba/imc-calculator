@@ -21,7 +21,9 @@ jest.mock("googleapis", () => {
 
 const AUTH = "sampleAuthString";
 
-const IMCs = [["Sample Test", "123", "123", "12/12/2012", "21"]];
+const IMCs = [
+  ["Sample Test", "123", "123", "12/12/2012", "21", "2022-04-16T21:44:03.998Z"],
+];
 
 const SUCCESS_RESULT = {
   config: {
@@ -41,7 +43,7 @@ describe("DB", () => {
   describe("listImcs", () => {
     test("Can get all IMC data", async () => {
       mockGetValues.mockImplementationOnce(async (infos, callback) => {
-        expect(infos.range).toBe("IMC!A2:E");
+        expect(infos.range).toBe("IMC!A2:F");
         callback(null, { data: { values: IMCs } });
       });
 
@@ -55,7 +57,7 @@ describe("DB", () => {
       const error = "sample error";
 
       mockGetValues.mockImplementationOnce(async (infos, callback) => {
-        expect(infos.range).toBe("IMC!A2:E");
+        expect(infos.range).toBe("IMC!A2:F");
         callback(error, {});
       });
 
@@ -66,7 +68,7 @@ describe("DB", () => {
 
     test("If no data, error is rejected", async () => {
       mockGetValues.mockImplementationOnce(async (infos, callback) => {
-        expect(infos.range).toBe("IMC!A2:E");
+        expect(infos.range).toBe("IMC!A2:F");
         callback(null, { data: { values: null } });
       });
 
@@ -77,7 +79,7 @@ describe("DB", () => {
   describe("appendImcs", () => {
     test("Can append new IMCs", async () => {
       mockAppendValues.mockImplementationOnce(async (infos, callback) => {
-        expect(infos.range).toBe("IMC!A2:E");
+        expect(infos.range).toBe("IMC!A2:F");
         expect(infos.requestBody).toEqual({ values: IMCs });
         expect(infos.valueInputOption).toBe("raw");
 

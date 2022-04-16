@@ -12,7 +12,7 @@ function listImcs(auth) {
     sheets.spreadsheets.values.get(
       {
         spreadsheetId: "1s6x4aWAptcaM0qWjVHHRUqXuSJPZpdTZ8276AiLQZ84",
-        range: "IMC!A2:E",
+        range: "IMC!A2:F",
       },
       (err, res) => {
         if (err) return reject("The API returned an error: " + err);
@@ -32,7 +32,7 @@ function appendImcs(auth, values) {
     sheets.spreadsheets.values.append(
       {
         spreadsheetId: "1s6x4aWAptcaM0qWjVHHRUqXuSJPZpdTZ8276AiLQZ84",
-        range: "IMC!A2:E",
+        range: "IMC!A2:F",
         requestBody,
         valueInputOption: "raw",
       },
