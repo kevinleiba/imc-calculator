@@ -24,4 +24,26 @@ function listImcs(auth) {
   });
 }
 
-module.exports = { listImcs };
+function appendImcs(auth, values) {
+  return new Promise((resolve, reject) => {
+    const requestBody = { values };
+    const sheets = google.sheets({ version: "v4", auth });
+
+    sheets.spreadsheets.values.append(
+      {
+        spreadsheetId: "1s6x4aWAptcaM0qWjVHHRUqXuSJPZpdTZ8276AiLQZ84",
+        range: "IMC!A2:E",
+        requestBody,
+        valueInputOption: "raw",
+      },
+      (err, _result) => {
+        if (err) return reject("The API returned an error: " + err);
+        else {
+          return resolve(values);
+        }
+      }
+    );
+  });
+}
+
+module.exports = { listImcs, appendImcs };
