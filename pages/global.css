@@ -3,6 +3,10 @@ body {
     'Arial', sans-serif;
 }
 
+html {
+  background-color: var(--beige);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -16,6 +20,7 @@ body {
 
   --font-m: 24px;
 
+  --beige: #F6F4F2;
   --black: #1D1406;
   --brown: #C98035;
   --white: #fff;
