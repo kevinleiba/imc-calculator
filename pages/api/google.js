@@ -13,7 +13,8 @@ const TOKEN_PATH = "token.json";
 fs.readFile("./credentials.json", (err, content) => {
   if (err) return console.log("Error loading client secret file:", err);
   // Authorize a client with credentials, then call the Google Sheets API.
-  authorize(JSON.parse(content), listMajors);
+  authorize(JSON.parse(content), listImcs);
+  // authorize(JSON.parse(content), listMajors);
 });
 
 /**
@@ -93,6 +94,33 @@ function listMajors(auth) {
         // Print columns A and E, which correspond to indices 0 and 4.
         rows.map((row) => {
           console.log(`${row[0]}, ${row[4]}`);
+        });
+      } else {
+        console.log("No data found.");
+      }
+    }
+  );
+}
+
+/**
+ * Prints the infos of imc people:
+ * @see https://docs.google.com/spreadsheets/d/1s6x4aWAptcaM0qWjVHHRUqXuSJPZpdTZ8276AiLQZ84/edit
+ * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
+ */
+function listImcs(auth) {
+  const sheets = google.sheets({ version: "v4", auth });
+  sheets.spreadsheets.values.get(
+    {
+      spreadsheetId: "1s6x4aWAptcaM0qWjVHHRUqXuSJPZpdTZ8276AiLQZ84",
+      range: "IMC!A2:E",
+    },
+    (err, res) => {
+      if (err) return console.log("The API returned an error: " + err);
+      const rows = res.data.values;
+      if (rows.length) {
+        rows.map((row) => {
+          const [name, weight, size, birth, imc] = row;
+          console.log({ name, weight, size, birth, imc });
         });
       } else {
         console.log("No data found.");
