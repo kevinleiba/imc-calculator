@@ -24,4 +24,7 @@ html {
   --black: #1D1406;
   --brown: #C98035;
   --white: #fff;
+
+button {
+  border: none;
 }
