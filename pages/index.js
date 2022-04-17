@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className={style.Home}>
       <Head>
-        <title>IMC Calculator</title>
+        <title>BMI Calculator</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Image

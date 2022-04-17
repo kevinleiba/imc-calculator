@@ -11,7 +11,7 @@ export function submitData({ birthDate, name, size, updatedAt, weight }) {
 
 export default function handler(req, res) {
   if (req.method === "POST") {
-    const { birthDate, name, size, weight } = JSON.parse(req.body);
+    const { birthDate, name, size, weight } = req.body;
 
     submitData({
       birthDate,
@@ -21,7 +21,7 @@ export default function handler(req, res) {
       weight,
     })
       .then((appenedData) => {
-        res.status(200).json(appenedData);
+        res.redirect(`/result?data=${JSON.stringify(appenedData)}`);
       })
       .catch((err) => {
         res.status(503).send(err);

@@ -1,6 +1,4 @@
-.Button {
-  --border-size: 4px;
-  
+.Button {  
   display: inline-block;
 
   transform: translate3d(0,0,0);
@@ -13,9 +11,12 @@
 
   color: var(--white);
   transition: all 0.1s ease-in-out;
+
+  cursor: pointer;
 }
 
-.Button:hover {
+.Button:hover, .Button:focus {
   box-shadow:  0px 0px 0px var(--brown);;
   transform: translate3d(var(--border-size), var(--border-size), 0);
+  outline: none;
 }
