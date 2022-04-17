@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 
-import Button from "../components/button";
+import Button from "../components/Button";
 
 import style from "./index.module.css";
 
