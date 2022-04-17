@@ -44,7 +44,7 @@ export default function Result() {
               </Button>
             </a>
           </Link>
-          <Link href="/history">
+          <Link href="/form_history">
             <a>
               <Button>
                 <p>See history</p>
