@@ -1,0 +1,27 @@
+body {
+  font-family: 'Inter', 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
+    'Arial', sans-serif;
+}
+
+html {
+  background-color: var(--beige);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  
+  --size-xs: 4px;
+  --size-s: 8px;
+  --size-m: 16px;
+  --size-l: 32px;
+  --size-xl: 64px;
+  --size-xxl: 128px;
+
+  --font-m: 24px;
+
+  --beige: #F6F4F2;
+  --black: #1D1406;
+  --brown: #C98035;
+  --white: #fff;
+}
