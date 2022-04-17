@@ -1,0 +1,38 @@
+.Result {
+  padding: var(--size-xl);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.Result__logo {
+  position: absolute;
+  top: var(--size-xl);
+  left: var(--size-xl);
+}
+
+.Result__text {
+  margin-bottom: var(--size-xl);
+}
+
+.Result__BMI {
+  font-size: var(--font-xl);
+  margin-bottom: var(--size-m);
+}
+
+.Result__sentence {
+  text-align: right;
+  font-size:  var(--font-l);
+  font-style: italic;
+}
+
+.Result__buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -1,0 +1,39 @@
+body {
+  font-family: 'Inter', 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
+    'Arial', sans-serif;
+}
+
+html {
+  background-color: var(--beige);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  
+  box-sizing: border-box;
+  
+  --size-xs: 4px;
+  --size-s: 8px;
+  --size-m: 16px;
+  --size-l: 32px;
+  --size-xl: 64px;
+  --size-xxl: 128px;
+
+  --font-m: 24px;
+  --font-l: 32px;
+  --font-xl: 64px;
+
+  --beige: #F6F4F2;
+  --black: #1D1406;
+  --brown: #C98035;
+  --dark-beige: #EFECE9;
+  --grey: #757575;
+  --white: #fff;
+
+  --border-size: 4px;
+}
+
+button {
+  border: none;
+}
