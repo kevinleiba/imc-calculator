@@ -1,0 +1,26 @@
+.History {
+  padding: var(--size-xl);
+}
+
+.History__title {
+  font-size: var(--font-l);
+  margin: var(--size-xl) 0;
+}
+
+.History__formCol {
+  width: 100%;
+  padding: var(--size-m);
+  background-color: var(--white);
+
+  display: flex;
+  align-items: center;
+}
+
+.History__formCol:nth-child(odd)  {
+  background-color: var(--dark-beige);
+}
+
+.History__formCol p {
+  font-size: var(--font-m);
+  width: calc(100% / 6);
+}

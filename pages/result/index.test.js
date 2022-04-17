@@ -20,7 +20,7 @@ describe("Result page", () => {
 
     const [again, history] = getAllByRole("button");
     expect(again.closest("a").href).toMatch("/form");
-    expect(history.closest("a").href).toMatch("/history");
+    expect(history.closest("a").href).toMatch("/form_history");
   });
   test("Without data page does not crash", () => {
     useRouter.mockReturnValueOnce({ query: {} });
