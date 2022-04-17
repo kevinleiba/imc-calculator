@@ -1,12 +1,12 @@
-const { appendImcs } = require("../../utils/db");
-const { getAuth } = require("../../utils/google");
-const { submitData } = require("./submit_data");
+const { appendImcs } = require("../utils/db");
+const { getAuth } = require("../utils/google");
+const { submitData } = require("../pages/api/submit_data");
 
-jest.mock("../../utils/db", () => ({
+jest.mock("../utils/db", () => ({
   appendImcs: jest.fn(),
 }));
 
-jest.mock("../../utils/google", () => ({
+jest.mock("../utils/google", () => ({
   getAuth: jest.fn().mockReturnValue("authToken"),
 }));
 
