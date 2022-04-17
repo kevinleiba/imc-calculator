@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import History from "./index";
+import History from "../pages/form_history/index";
 
 describe("History page", () => {
   test("Can render all data", () => {

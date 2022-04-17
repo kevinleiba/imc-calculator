@@ -21,7 +21,11 @@ export default function handler(req, res) {
       weight,
     })
       .then((appenedData) => {
-        res.redirect(`/result?data=${JSON.stringify(appenedData)}`);
+        res
+          .writeHead(302, {
+            Location: `/result?data=${JSON.stringify(appenedData)}`,
+          })
+          .end();
       })
       .catch((err) => {
         res.status(503).send(err);

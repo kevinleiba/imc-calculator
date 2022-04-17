@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 
-import Form from "./index";
+import Form from "../pages/form/index";
 
 describe("Form", () => {
   test("Can get all form elements", () => {
