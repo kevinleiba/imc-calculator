@@ -1,8 +1,8 @@
 import { render } from "@testing-library/react";
 import { useRouter } from "next/router";
-import { bmiToSentence } from "../../utils/bmi";
+import { bmiToSentence } from "../utils/bmi";
 
-import Result from "./index";
+import Result from "../pages/result/index";
 
 jest.mock("next/router", () => ({
   useRouter: jest.fn(),
