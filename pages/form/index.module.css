@@ -1,0 +1,36 @@
+.Form {
+  padding: var(--size-l)
+}
+
+.Form__instructions {
+  margin: var(--size-xl) 0;
+  font-size: var(--font-l);
+}
+
+.Form__form {
+  max-width: 735px;
+}
+
+.Form__form input {
+  display: block;
+  margin-bottom: var(--font-m);
+  width: 100%;
+
+  border: none;
+
+  font-size: var(--font-m);
+  padding: var(--size-m) var(--size-l);
+
+   box-shadow: var(--border-size) var(--border-size) 0px var(--grey); 
+   transition: all 0.1s ease-in-out;
+}
+
+.Form__form input:focus {
+  box-shadow:  0px 0px 0px var(--brown);;
+  transform: translate3d(var(--border-size), var(--border-size), 0);
+  outline: none;
+}
+
+.Form__form button {
+  margin-top: var(--size-xl);
+}
