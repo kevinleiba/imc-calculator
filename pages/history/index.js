@@ -1,6 +1,10 @@
+import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import { listImcs } from "../../utils/db";
 import { getAuth } from "../../utils/google";
+
+import style from "./index.module.css";
 
 function formatISOStringToDDMMYYYY(isoStr) {
   const [year, month, rawDay] = isoStr.split("-");
@@ -37,16 +41,23 @@ function Header({ name, weight, size, birth, bmi, updatedAt }) {
 
 export default function History({ bmis }) {
   return (
-    <div>
+    <div className={style.History}>
+      <Head>
+        <title>BMI Calculator</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Link href="/">
-        <a>go back</a>
+        <a>
+          <Image src="/bmi.svg" alt="bmi logo" width="130" height="42.29" />
+        </a>
       </Link>
+      <p className={style.History__title}>History of all concerned people:</p>
       {[
         ["Name", "Weight", "Size", "Birthdate", "BMI", "Created At"],
         ...bmis,
       ].map(([name, weight, size, birth, bmi, updatedAt], index) => {
         return (
-          <div key={updatedAt}>
+          <div key={updatedAt} className={style.History__formCol}>
             {index === 0 ? (
               <Header
                 name={name}
