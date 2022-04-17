@@ -11,6 +11,8 @@ html {
   margin: 0;
   padding: 0;
   
+  box-sizing: border-box;
+  
   --size-xs: 4px;
   --size-s: 8px;
   --size-m: 16px;
